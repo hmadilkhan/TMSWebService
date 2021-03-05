@@ -8,14 +8,26 @@ $server = new nusoap_server();
 $server->configureWSDL('server', 'urn:server');
 
 
-  // get login
-  $server->register('login',
-         array('username' => 'xsd:string','password' => 'xsd:string','serial' => 'xsd:string','terminal' => 'xsd:int'),   // parameter
-         array('return' => 'xsd:string'),     // output
-         'urn:server',                        // namespace
-         'urn:server#loginServer');                   // description
+// get login
+$server->register(
+  'login',
+  array('username' => 'xsd:string', 'password' => 'xsd:string', 'serial' => 'xsd:string', 'terminal' => 'xsd:int'),   // parameter
+  array('return' => 'xsd:string'),     // output
+  'urn:server',                        // namespace
+  'urn:server#loginServer'
+);                   // description
 
-    
+
+// get login
+$server->register(
+  'create_token',
+  array('username' => 'xsd:string', 'password' => 'xsd:string', 'serial' => 'xsd:string', 'terminal' => 'xsd:int'),   // parameter
+  array('return' => 'xsd:string'),     // output
+  'urn:server',                        // namespace
+  'urn:server#create_tokenServer'
+);
+
+
 
 // Use the request to invoke the service
 $server->service(file_get_contents("php://input"));
